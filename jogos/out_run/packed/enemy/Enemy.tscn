@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://packed/enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/enemy2.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 45.6742, 104.564 )
+
+[node name="Enemy" type="RigidBody2D"]
+position = Vector2( -725.573, -121.355 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="car" type="Sprite" parent="."]
+position = Vector2( 1461.18, 506.812 )
+scale = Vector2( 0.811072, 0.945322 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1460.93, 506.799 )
+shape = SubResource( 1 )
+

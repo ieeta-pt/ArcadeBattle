@@ -1,0 +1,609 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <script type="text/javascript">
+
+        var gesturesChart = null;
+        var gamesScoresChart = null;
+        window.onload = function(){
+
+            var slider = document.getElementById("myRange").firstChild.nextSibling;
+            var output = document.getElementById("progress_value");
+            output.innerHTML = slider.value + " %";
+
+            slider.oninput = function() {
+              output.innerHTML = this.value + " %";
+            }
+            var ctx = document.getElementById("gamesScoresChart").getContext("2d");
+
+            if(ctx) {
+                ctx.height = 150;
+                gamesScoresChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  labels: [],
+                  type: 'line',
+                  defaultFontFamily: 'Poppins',
+                  datasets: [{
+                    label: "",
+                    data: [],
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(0,224,15,0.8)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(0,224,15,1)',
+                  }, {
+                    label: "",
+                    data: [],
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(224,0,205,0.8)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(224,0,205,1)',
+                  },{
+                    label: "",
+                    data: [],
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(227,15,0,0.8)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(227,15,0,1)',
+                  }, {
+                    label: "",
+                    data: [],
+                    backgroundColor: 'transparent',
+                    borderColor: 'rgba(0,211,230,0.8)',
+                    borderWidth: 3,
+                    pointStyle: 'circle',
+                    pointRadius: 5,
+                    pointBorderColor: 'transparent',
+                    pointBackgroundColor: 'rgba(0,211,230,1)',
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  tooltips: {
+                    mode: 'index',
+                    titleFontSize: 12,
+                    titleFontColor: '#000',
+                    bodyFontColor: '#000',
+                    backgroundColor: '#fff',
+                    titleFontFamily: 'Poppins',
+                    bodyFontFamily: 'Poppins',
+                    cornerRadius: 3,
+                    intersect: false,
+                  },
+                  legend: {
+                    display: false,
+                    labels: {
+                      usePointStyle: true,
+                      fontFamily: 'Poppins',
+                    },
+                  },
+                  scales: {
+                    xAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: false,
+                        drawBorder: false
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Week'
+                      },
+                      ticks: {
+                        fontFamily: "Poppins"
+                      }
+                    }],
+                    yAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: false,
+                        drawBorder: false
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Highscore',
+                        fontFamily: "Poppins"
+
+                      },
+                      ticks: {
+                        fontFamily: "Poppins"
+                      }
+                    }]
+                  },
+                  title: {
+                    display: false,
+                    text: 'Normal Legend'
+                  }
+                }
+                });
+            }
+
+            var ctx = document.getElementById("gesturesChart").getContext("2d");
+            if (ctx) {
+                ctx.height = 150;
+                gesturesChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [],
+                            backgroundColor: [
+                                "rgba(138, 120, 255, 0.8)",
+                                "rgba(255, 197, 120, 0.8)",
+                                "rgba(237, 255, 120, 0.8)",
+                                "rgba(255, 120, 237, 0.8)"
+                            ],
+                            hoverBackgroundColor: [
+                                "rgba(138, 120, 255, 1)",
+                                "rgba(255, 197, 120, 1)",
+                                "rgba(237, 255, 120, 1)",
+                                "rgba(255, 120, 237, 1)"
+                            ]
+
+                        }],
+                        labels: []
+                    },
+
+                    options: {
+                        maintainAspectRatio: true,
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontFamily: 'Poppins'
+                            }
+
+                        },
+                        responsive: true
+                    }
+                });
+            }
+
+            //ADD DATA
+            gamesScoresChart.data.labels = [];
+            gamesScoresChart.data.datasets.forEach((dataset) => {
+                dataset.label = "";
+                dataset.data = [];
+            });
+            gesturesChart.data.datasets[0].data = [];
+            gesturesChart.data.labels = [];
+
+            switch (""+{{ nif }}) {
+                case "11092874":
+                    document.getElementById("current_patient").innerHTML += "Daniel Nunes";
+                    gamesScoresChart.data.labels = ["1", "2", "3", "4"];
+                    gamesScoresChart.data.datasets[0].label = "Flappy Bird";
+                    gamesScoresChart.data.datasets[0].data = ["10", "12", "5", "21"];
+                    gamesScoresChart.data.datasets[1].label = "Space Invaders";
+                    gamesScoresChart.data.datasets[1].data = ["40", "45", "32", "44"];
+                    gamesScoresChart.update();
+                    gesturesChart.data.datasets[0].data = [40,60];
+                    gesturesChart.data.labels = ["Mão Aberta","Três dedos levantados"];
+                    gesturesChart.update();
+                    break;
+                case "223344565":
+                    document.getElementById("current_patient").innerHTML += "Rafael Direito";
+                    gamesScoresChart.data.labels = ["1", "2", "3", "4", "5", "6"];
+                    gamesScoresChart.data.datasets[0].label = "Gun Fight";
+                    gamesScoresChart.data.datasets[0].data = ["2", "5", "15", "35", "40", "41"];
+                    gamesScoresChart.update();
+                    gesturesChart.data.datasets[0].data = [60,10,30];
+                    gesturesChart.data.labels = ["Mão fechada","Dois dedos levantados","Polegar e mindinho levantados"];
+                    gesturesChart.update();
+                    break;
+            }
+        }
+
+        function editNote(){
+            document.getElementById("notes").disabled = false;
+            document.getElementById("saveButton").disabled = false;
+            document.getElementById("editButton").disabled = true;
+        }
+
+        function saveNote(){
+            document.getElementById("notes").disabled = true;
+            document.getElementById("saveButton").disabled = true;
+            document.getElementById("editButton").disabled = false;
+        }
+
+    </script>
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <h1 id="current_patient">Patient: </h1>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2%">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-tab">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="custom-nav-basicInfo-tab" data-toggle="tab" href="#custom-nav-basicInfo" role="tab" aria-controls="custom-nav-basicInfo"
+                                     aria-selected="true">Basic Info</a>
+                                    <a class="nav-item nav-link" id="basic-info-tab" data-toggle="tab" href="#custom-nav-profile" role="tab" aria-controls="custom-nav-profile"
+                                     aria-selected="false">Notes</a>
+                                    <a class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab" href="#custom-nav-contact" role="tab" aria-controls="custom-nav-contact"
+                                     aria-selected="false">Gestures</a>
+                                    <a class="nav-item nav-link" id="custom-nav-add-gesture-tab" data-toggle="tab" href="#custom-nav-add-gesture" role="tab" aria-controls="custom-nav-add-gesture"
+                                     aria-selected="false">Add Gesture</a>
+                                     <a class="nav-item nav-link" id="custom-nav-statistics-tab" data-toggle="tab" href="#custom-nav-statistics" role="tab" aria-controls="custom-nav-statistics"
+                                     aria-selected="false">Statistics</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="custom-nav-basicInfo" role="tabpanel" aria-labelledby="custom-nav-basicInfo-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-3">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                     <div class="mx-auto d-block">
+                                                        <img class="rounded-circle mx-auto d-block" src="{%  static 'images/icon/avatar-01.jpg' %}">
+                                                        <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                                        <div class="location text-sm-center">
+                                                            <i class="fa fa-map-marker"></i> California, United States
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                    <form action="" method="post" class="form-horizontal">
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Name" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-envelope"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Email" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-phone"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Contact" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-add-gesture" role="tabpanel" aria-labelledby="custom-nav-add-gesture-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                               <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                    <div class="card-body card-block">
+                                                        <div class="card-body card-block">
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-1 col-sm-2 ">
+                                                                    {{ form.name.label_tag }}
+                                                                </div>
+                                                                <div class="col-12 col-md-5 col-sm-4">
+                                                                    {{ form.name }}
+                                                                </div>
+                                                                <div class="col col-md-1 col-sm-2 ">
+                                                                    {{ form.default_difficulty.label_tag }}
+                                                                </div>
+                                                                <div id="myRange" class="col-12 col-md-4 col-sm-3">
+                                                                    {{ form.default_difficulty }}
+                                                                </div>
+                                                                <div class="col col-md-1 col-sm-1">
+                                                                    <small id="progress_value"></small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-1 col-sm-2 ">
+                                                                    {{ form.repetitions.label_tag }}
+                                                                </div>
+                                                                <div class="col-12 col-md-5 col-sm-4">
+                                                                    {{ form.repetitions }}
+                                                                </div>
+                                                                <div class="col col-md-1 col-sm-2 ">
+                                                                    {{ form.image.label_tag }}
+                                                                </div>
+                                                                <!--<div class="col-12 col-md-5 col-sm-4">
+                                                                    {{ form.image }}
+                                                                </div>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                                        </button>
+                                                        <button type="reset" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-ban"></i> Reset
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel" aria-labelledby="custom-nav-profile-tab">
+                                    <textarea id="notes" class="form-control" rows="12" cols="50" placeholder="Write your notes here" disabled></textarea>
+                                    &nbsp;
+                                    <div class="row">
+                                        <button onclick="editNote()" id="editButton" class="form-control btn btn-success col-lg-2 col-md-3"><i class="fa fa-pencil-alt"></i>&nbsp;Edit</button>
+                                        &nbsp;
+                                        <button onclick="saveNote()" id="saveButton" class="form-control btn btn-info col-lg-2 col-md-3" disabled><i class="fa fa-save"></i>&nbsp;Save</button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel" aria-labelledby="custom-nav-contact-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color:#fff">
+                                                    <strong class="card-title mb-3 sm-6">...Gesture...</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="{% static 'images/hand3.png' %}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                   <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color: #fff">
+                                                    <strong class="card-title mb-3">...Gesture...</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="{% static 'images/hand3.png' %}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                    <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color: #fff">
+                                                    <strong class="card-title mb-3">...Gesture...</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="{% static 'images/hand3.png' %}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                    <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color: #fff">
+                                                    <strong class="card-title mb-3">...Gesture...</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="{% static 'images/hand3.png' %}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                    <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color: #fff">
+                                                    <strong class="card-title mb-3">...Gesture...</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="{% static 'images/hand3.png' %}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                    <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-statistics" role="tabpanel" aria-labelledby="custom-nav-statistics-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Games Scores</h3>
+                                                    <canvas id="gamesScoresChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Gestures</h3>
+                                                    <canvas id="gesturesChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Team Commits</h3>
+                                                    <canvas id="team-chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Bar chart</h3>
+                                                    <canvas id="barChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal gesture -->
+<div class="modal fade" id="gestureStatisticsModal" tabindex="-1" role="dialog" aria-labelledby="gestureStatisticsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gestureStatisticsModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body row">
+                <div class="col-md-3">
+                    <div class="card" style="margin-bottom:0px !important">
+                        <img class="card-img-top"  src="{% static 'images/hand3.png' %}"
+                            alt="Card image cap">
+                            <div class="card-text text-sm-center">
+                                <p>Polegar e Mindinho Levantados</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card" style="border:0px; margin-bottom:0px">
+                        <div class="card-body card-block" style="padding:0px">
+                            <form action="" method="post" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon col-md-4" style="margin-right:7px">
+                                                <i class="fa fa-user"></i> Name
+                                            </div>
+                                            <input type="text" id="input1-group1" name="input1-group1" value="Polegar e Mindinho Levantados" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon  col-md-4" style="margin-right:7px">
+                                                    <i class="far fa-chart-bar"></i> Default Difficulty
+                                            </div>
+                                            <div class="progress" style="width:65%; height: auto; margin-bottom: 0px;">
+                                                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                                                        aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" style="margin-right:7px; width:33%">
+                                                <i class="fas fa-flag"></i> Repetitions
+                                            </div>
+                                            <input type="text" id="input1-group1" disabled name="input1-group1" value="29" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                        <div class="col col-md-12">
+                                            <div class="input-group">
+                                                <div class="input-group-addon  col-md-4" style="margin-right:7px">
+                                                    <i class="fas fa-user"></i> User Difficulty
+                                                </div>
+                                                <div class="progress" style="width:65%; height: auto; margin-bottom: 0px;">
+                                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="5'"
+                                                            aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end gesture large -->
+{% endblock %}

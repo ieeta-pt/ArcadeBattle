@@ -1,0 +1,50 @@
+\babel@toc {portuguese}{}
+\contentsline {section}{Palavras-chave}{5}{section*.2}% 
+\contentsline {section}{Resumo}{7}{section*.3}% 
+\contentsline {section}{Abreviaturas}{9}{section*.4}% 
+\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{11}{section.1}% 
+\contentsline {section}{\numberline {2}Estado da Arte e Trabalho Relacionado}{13}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Serious Games}{13}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Reconhecimento de Gestos}{14}{subsection.2.2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Software}{14}{subsubsection.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Hardware}{16}{subsubsection.2.2.2}% 
+\contentsline {section}{\numberline {3}Modelo Conceptual}{19}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Requisitos do Sistema}{19}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Obten\IeC {\c c}\IeC {\~a}o de Requisitos}{19}{subsubsection.3.1.1}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Descri\IeC {\c c}\IeC {\~a}o do Contexto de Utiliza\IeC {\c c}\IeC {\~a}o}{20}{subsubsection.3.1.2}% 
+\contentsline {subsubsection}{\numberline {3.1.3}Atores}{20}{subsubsection.3.1.3}% 
+\contentsline {subsubsection}{\numberline {3.1.4}Casos de Uso}{20}{subsubsection.3.1.4}% 
+\contentsline {section}{\numberline {4}Pesquisa}{23}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Reconhecimento de Gestosi Atrav\IeC {\'e}s do LMC}{23}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Reconhecimento de gestos atrav\IeC {\'e}s de um dispositivo Android.}{25}{subsection.4.2}% 
+\contentsline {subsubsection}{\numberline {4.2.1}Objetivos}{25}{subsubsection.4.2.1}% 
+\contentsline {subsubsection}{\numberline {4.2.2}OpenCV}{26}{subsubsection.4.2.2}% 
+\contentsline {subsubsection}{\numberline {4.2.3}Recolha e An\IeC {\'a}lise de Imagens}{26}{subsubsection.4.2.3}% 
+\contentsline {subsubsection}{\numberline {4.2.4}Problemas Encontrados}{27}{subsubsection.4.2.4}% 
+\contentsline {subsubsection}{\numberline {4.2.5}Conclus\IeC {\~a}o}{27}{subsubsection.4.2.5}% 
+\contentsline {section}{\numberline {5}Procedimento}{29}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Arquitetura do Sistema}{29}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Reconhecimento de Gestos}{30}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Base de Dados}{31}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}REST API}{31}{subsection.5.4}% 
+\contentsline {subsubsection}{\numberline {5.4.1}\textit {Queries}, Django ORM e Base de Dados}{32}{subsubsection.5.4.1}% 
+\contentsline {subsubsection}{\numberline {5.4.2}Autentica\IeC {\c c}\IeC {\~a}o e Autoriza\IeC {\c c}\IeC {\~a}o}{33}{subsubsection.5.4.2}% 
+\contentsline {subsubsection}{\numberline {5.4.3}Envio Autom\IeC {\'a}tico de E-mails}{34}{subsubsection.5.4.3}% 
+\contentsline {subsection}{\numberline {5.5}Plataforma do M\IeC {\'e}dico}{35}{subsection.5.5}% 
+\contentsline {subsubsection}{\numberline {5.5.1}Adicionar/Remover Paciente}{35}{subsubsection.5.5.1}% 
+\contentsline {subsubsection}{\numberline {5.5.2}Observar estat\IeC {\'\i }sticas}{36}{subsubsection.5.5.2}% 
+\contentsline {subsubsection}{\numberline {5.5.3}Adicionar Gestos}{37}{subsubsection.5.5.3}% 
+\contentsline {subsubsection}{\numberline {5.5.4}Escrever Notas Privadas ou Partilhadas com o Paciente}{38}{subsubsection.5.5.4}% 
+\contentsline {subsection}{\numberline {5.6}Plataforma do Paciente}{38}{subsection.5.6}% 
+\contentsline {subsubsection}{\numberline {5.6.1}Autentica\IeC {\c c}\IeC {\~a}o}{39}{subsubsection.5.6.1}% 
+\contentsline {subsubsection}{\numberline {5.6.2}Jogos}{39}{subsubsection.5.6.2}% 
+\contentsline {subsubsection}{\numberline {5.6.3}Perfil}{40}{subsubsection.5.6.3}% 
+\contentsline {subsubsection}{\numberline {5.6.4}Estat\IeC {\'\i }sticas}{41}{subsubsection.5.6.4}% 
+\contentsline {subsubsection}{\numberline {5.6.5}Gestos}{42}{subsubsection.5.6.5}% 
+\contentsline {subsection}{\numberline {5.7}Jogos}{42}{subsection.5.7}% 
+\contentsline {subsubsection}{\numberline {5.7.1}P5.JS}{43}{subsubsection.5.7.1}% 
+\contentsline {subsubsection}{\numberline {5.7.2}Godot}{44}{subsubsection.5.7.2}% 
+\contentsline {subsubsection}{\numberline {5.7.3}Comunica\IeC {\c c}\IeC {\~a}o Entre M\IeC {\'o}dulos}{46}{subsubsection.5.7.3}% 
+\contentsline {section}{\numberline {6}Resultados}{49}{section.6}% 
+\contentsline {section}{\numberline {7}Conclus\IeC {\~a}o}{51}{section.7}% 
+\contentsline {section}{Refer\IeC {\^e}ncias}{53}{section*.41}% 

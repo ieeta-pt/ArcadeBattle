@@ -1,0 +1,91 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <script>
+        $(function () {
+            $(".video").click(function () {
+                var theModal = $(this).data("target"),
+                    videoSRC = $(this).attr("data-video"),
+                    gameName = $(this).attr("name"),
+                    videoSRCauto = videoSRC +
+                    "?modestbranding=1&rel=0&controls=1&showinfo=0&html5=1&autoplay=1";
+                $(theModal + ' iframe').attr('src', videoSRCauto);
+                console.log(gameName);
+                $("#modalLabel").text(gameName);
+            });
+        });
+
+        $(function () {
+            $('.modal').on('hidden.bs.modal', function (e) {
+                var iframe = $(e.delegateTarget).find('iframe');
+                console.log(iframe);
+                var src = iframe.attr("src");
+                iframe.attr("src", '');
+            });
+        });
+    </script>
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row col-lg-12">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Games</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                {% for g in games %}
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-header"
+                                            style="text-align: center; background:#4272d7; color: #fff">
+                                            <strong class="card-title mb-3">{{ g.name }}</strong>
+                                        </div>
+                                        <img class="card-img-top" src="data:image/png;base64, {{ g.photo_b64 }}";
+                                            alt="Card image cap">
+                                        <div class="card-body">
+                                            <div class="card-text text-sm-center">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary video"
+                                                    data-toggle="modal" data-target="#modal"
+                                                    data-video="{{ g.preview_link }}" name="{{ g.name }}">
+                                                    <i class="fas fa-search-plus"></i> Preview
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal large -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding:0px !important">
+                <iframe width="100%" height="360px" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

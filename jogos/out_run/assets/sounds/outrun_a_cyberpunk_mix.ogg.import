@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/outrun_a_cyberpunk_mix.ogg-3746447db88180c7f8d0a7bf5d021eaf.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/outrun_a_cyberpunk_mix.ogg"
+dest_files=[ "res://.import/outrun_a_cyberpunk_mix.ogg-3746447db88180c7f8d0a7bf5d021eaf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

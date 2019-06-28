@@ -1,0 +1,19 @@
+Opções:
+
+Unity
+	Unity à primeira vista parece uma boa opção, uma vez que este é bastante utilizado na industria de jogos e possui já ferramentas de integração com leap motion,
+contudo esta ferramenta focasse no desenvolvimento de jogos em 3d e como o nosso objetivo é o desenvolvimento de jogos arcade 2d o uso de unity é desnecessário,
+pois iria causar mais entropia do que ser útil.
+
+P5js +  Electron
+	Outra opção abordada foi o uso de um biblioteca com o nome de P5 js, cujo o seu objetivo é ser um caderno de desenho simplificado permitindo desenhar objetos de
+forma simples e rápida, e tornar a aplicação uma web app. Caso fosse necessário uma app desktop usariamos o Electron, 
+que permite criar uma app desktop com base em HTML CSS e Javascript.
+	Esta opção é a mais viável uma vez que com uma biblioteca de desenho podemos criar os sprites necessários e após isso criarmos manualmente o 
+motor de jogo que desejamos sem dependências adicionais, simplificando o código e diminuindo as dependências.
+
+Godot
+	É um motor de jogo que permite criar jogos em 2D e 3D, com bastantes funcionalidades,
+contudo este apenas permite o desenvolvimento para desktop apps e necessita de uma instalação prévia dos jogos para se poder jogar, 
+o que vai contra o nosso objetivo. 
+	Concluindo embora fosse facilitar o nosso trabalho acabamos por descartar esta opção por não facilitar a utilização para o nosso utilizador final, o doente.

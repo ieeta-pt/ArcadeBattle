@@ -1,0 +1,129 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <script>
+        $(document).ready(function ()
+        {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+        
+        function access_patient(td) {
+            window.location.href = "{% url 'admin_statistics' %}?email=" + td.parentNode.childNodes[7].textContent;
+        }
+
+        function loadInfo(first_name, last_name, email)
+        {
+            document.getElementById("id_first_name").value = first_name;
+            $("#id_first_name").prop('readonly', true);
+            document.getElementById("id_last_name").value = last_name;
+            $("#id_last_name").prop('readonly', true);
+            document.getElementById("id_email").value = email;
+            $("#id_email").prop('readonly', true);
+        }
+
+
+    </script>
+
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+
+            <h1>Admins List</h1>
+            <div class="col-lg-12">
+
+                <div class="table-responsive ">
+                    <table id="dtBasicExample"
+                        class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th class="text-center">Birth Date</th>
+                                <th class="text-center">NIF</th>
+                                <th>E-mail</th>
+                                <th>Rem.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in admins %}
+                            <tr>
+                                <td onclick="access_patient(this)">{{ a.first_name }} {{ a.last_name }}</td>
+                                <td class="text-center" onclick="access_patient(this)">{{ a.birth_date }}</td>
+                                <td class="text-center" onclick="access_patient(this)">{{ a.nif }}</td>
+                                <td onclick="access_patient(this)">{{ a.username }}</td>
+                                <td>
+                                    <button type="button" class="btn-sm btn-danger"
+                                        data-toggle="modal" data-target="#deleteModal"
+                                        onclick="loadInfo('{{ a.first_name }}', '{{ a.last_name }}', '{{ a.username }}')">
+                                        Remove
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to remove: </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                <div class="modal-body">
+
+                    <div class="row form-group">
+
+                        <div class="input-group">
+                            <div class="input-group-addon col-lg-4 offset-lg-1">
+                                <i class="fa fa-phone"></i> {{ form.first_name.label }}
+                            </div>
+                            <div class="input-group-addon col-lg-6" >
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-top: 20px">
+                            <div class="input-group-addon col-lg-4 offset-lg-1">
+                                <i class="fa fa-phone"></i> {{ form.last_name.label }}
+                            </div>
+                            <div class="input-group-addon col-lg-6" >
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-top: 20px">
+                            <div class="input-group-addon col-lg-4 offset-lg-1">
+                                <i class="fa fa-phone"></i> {{ form.email.label }}
+                            </div>
+                            <div class="input-group-addon col-lg-6">
+                                {{ form.email }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

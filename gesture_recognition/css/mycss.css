@@ -1,0 +1,35 @@
+canvas {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+}
+
+#recognition_content {
+    width: 740px;
+    height: 600px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    visibility: hidden;
+}
+
+#canvas_div {
+    margin-bottom: 30px;
+}
+
+#right_status_bars {
+    margin-top: 30px;
+    float: left;
+}
+
+#random_status_bars {
+    margin-top: 30px;
+    float: right;
+    margin-right: 70px;
+}

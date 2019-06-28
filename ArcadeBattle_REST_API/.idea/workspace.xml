@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d99dd035-5e31-4198-8e65-ac0232c5e6c7" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/login.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/basic_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/basic_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/patient_statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/templates/patient_statistics.html" afterDir="false" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../ArcadeBattle_DoctorClient/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" afterDir="false" />
+=======
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ArcadeBattle_REST_API" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="606" lean-forward="true" selection-start-line="606" selection-end-line="606" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="160" column="17" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+              <folding>
+                <element signature="e#319#334#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="140" selection-start-line="140" selection-end-line="141" />
+              <folding>
+                <element signature="e#1#45#0" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="217" selection-start-line="217" selection-end-line="217" />
+              <folding>
+                <element signature="e#1#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+<<<<<<< HEAD
+      <find>get_games_played</find>
+      <find>WASN</find>
+      <find>get_gestures</find>
+      <find>profil</find>
+      <find>get_my_profile</find>
+      <find>Token</find>
+      <find>username_from_token</find>
+      <find>data</find>
+      <find>request-.da</find>
+      <find>my_</find>
+      <find>user_profile</find>
+      <find>logou</find>
+=======
+      <find>get_getures</find>
+      <find>max_s</find>
+      <find>gestures_by_user</find>
+      <find>gest</find>
+      <find>gestures_by_game</find>
+      <find>gestures</find>
+      <find>gestures_by</find>
+      <find>gestures_b</find>
+      <find>add_game</find>
+      <find>games_played_by_user</find>
+      <find>add_gam</find>
+      <find>new_</find>
+      <find>new_ga</find>
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <find>profile</find>
+      <find>username_from_token</find>
+      <find>add_user</find>
+<<<<<<< HEAD
+      <find>add_ga</find>
+      <find>upda</find>
+      <find>update_notes</find>
+      <find>simple_ap</find>
+      <find>sample</find>
+      <find>get_gestures_used</find>
+      <find>login</find>
+      <find>def login</find>
+      <find>authenticate</find>
+      <find>allow</find>
+      <find>reload</find>
+      <find>156253</find>
+      <find>user</find>
+=======
+      <find>new_use</find>
+      <find>photo_b64</find>
+      <find>all_pa</find>
+      <find>patient_gest</find>
+      <find>data_for</find>
+      <find>get_patient_gestures</find>
+      <find>data</find>
+      <find>patient_games_scores</find>
+      <find>g2</find>
+      <find>reload:</find>
+      <find>delete</find>
+      <find>all_patients</find>
+      <find>all_p</find>
+      <find>delete_user</find>
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+    </findStrings>
+    <replaceStrings>
+      <replace>repetitions</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/Django_REST/serializers.py" />
+        <option value="$PROJECT_DIR$/venv/lib/python3.6/site-packages/rest_framework/routers.py" />
+        <option value="$PROJECT_DIR$/Django_REST/settings.py" />
+        <option value="$PROJECT_DIR$/Django_REST/queries.py" />
+        <option value="$PROJECT_DIR$/Django_REST/urls.py" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/admin.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py" />
+        <option value="$PROJECT_DIR$/app/views.py" />
+=======
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/settings.py" />
+        <option value="$PROJECT_DIR$/app/admin.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py" />
+        <option value="$PROJECT_DIR$/app/views.py" />
+        <option value="$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="812" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ArcadeBattle_REST_API" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ArcadeBattle_REST_API" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ArcadeBattle_REST_API" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ArcadeBattle_REST_API" type="462c0819:PsiDirectoryNode" />
+              <item name="ArcadeBattle_REST_API" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Django_REST" type="Python.DjangoServer" factoryName="Django server">
+      <module name="ArcadeBattle_REST_API" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d99dd035-5e31-4198-8e65-ac0232c5e6c7" name="Default Changelist" comment="" />
+      <created>1555105543008</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555105543008</updated>
+      <workItem from="1555105559452" duration="3503000" />
+      <workItem from="1555110240611" duration="4565000" />
+      <workItem from="1555145128910" duration="31768000" />
+<<<<<<< HEAD
+      <workItem from="1555236823858" duration="4572000" />
+      <workItem from="1558125747882" duration="7539000" />
+=======
+      <workItem from="1555236823858" duration="5156000" />
+      <workItem from="1555319229379" duration="474000" />
+      <workItem from="1555334415869" duration="4826000" />
+      <workItem from="1555494190889" duration="1276000" />
+      <workItem from="1555498744070" duration="4479000" />
+      <workItem from="1555534841629" duration="80000" />
+      <workItem from="1555535556629" duration="2472000" />
+      <workItem from="1555589178965" duration="3864000" />
+      <workItem from="1555596019898" duration="111000" />
+      <workItem from="1555611579224" duration="3511000" />
+      <workItem from="1555621621051" duration="3717000" />
+      <workItem from="1555631972222" duration="3780000" />
+      <workItem from="1555665488530" duration="10246000" />
+      <workItem from="1555694260980" duration="5754000" />
+      <workItem from="1555701306270" duration="642000" />
+      <workItem from="1555755073135" duration="570000" />
+      <workItem from="1555757893304" duration="435000" />
+      <workItem from="1555809546948" duration="131000" />
+      <workItem from="1555945167914" duration="600000" />
+      <workItem from="1555951432332" duration="866000" />
+      <workItem from="1555968814378" duration="2444000" />
+      <workItem from="1556022703252" duration="1538000" />
+      <workItem from="1556034289253" duration="3197000" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="51947000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18257576" />
+=======
+    <option name="totallyTimeSpent" value="100005000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="812" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4982079" visible="true" weight="0.16309012" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.50179213" side_tool="true" weight="0.20100144" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916668" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+<<<<<<< HEAD
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.32916668" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+=======
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.225" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4985694" visible="true" weight="0.28611112" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32916668" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4982079" visible="true" weight="0.20958512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.50179213" side_tool="true" weight="0.20100144" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916668" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.225" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4985694" weight="0.225" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/rest_framework/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="273" selection-start-line="273" selection-end-line="273" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/encoder.py" />
+=======
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/json/encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="179" selection-start-line="179" selection-end-line="179" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/rest_framework/routers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Django_REST/serializers.py" />
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/settings.py">
+=======
+    <entry file="file://$PROJECT_DIR$/app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2055">
+          <caret line="138" column="38" selection-start-line="138" selection-start-column="38" selection-end-line="138" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="5" selection-end-column="31" />
+=======
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="407" selection-start-line="407" selection-end-line="407" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+<<<<<<< HEAD
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="13" />
+=======
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="160" column="17" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+          <folding>
+            <element signature="e#319#334#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
+          <folding>
+            <element signature="e#1#45#0" expanded="true" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="140" selection-start-line="140" selection-end-line="141" />
+          <folding>
+            <element signature="e#1#45#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/ArcadeBattle_REST_API/queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="606" lean-forward="true" selection-start-line="606" selection-end-line="606" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+>>>>>>> db1a0cfaafe312de1e1205a0991a886ec44c8b6b
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

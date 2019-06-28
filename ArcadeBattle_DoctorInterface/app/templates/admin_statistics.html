@@ -1,0 +1,100 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <script type="text/javascript">
+        window.onload = function(){
+            switch (""+{{ nif }}) {
+                case "1":
+                    document.getElementById("current_admin").innerHTML += "Admin 1";
+                    break;
+                case "2":
+                    document.getElementById("current_admin").innerHTML += "Admin 2";
+                    break;
+            }
+        }
+    </script>
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <h1 id="current_admin">Admin: </h1>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2%">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-tab">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="custom-nav-basicInfo-tab" data-toggle="tab" href="#custom-nav-basicInfo" role="tab" aria-controls="custom-nav-basicInfo"
+                                     aria-selected="true">Basic Info</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="custom-nav-basicInfo" role="tabpanel" aria-labelledby="custom-nav-basicInfo-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-3">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                     <div class="mx-auto d-block">
+                                                        <img class="rounded-circle mx-auto d-block" src="{%  static 'images/icon/avatar-01.jpg' %}">
+                                                        <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+                                                        <div class="location text-sm-center">
+                                                            <i class="fa fa-map-marker"></i> California, United States
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                    <form action="" method="post" class="form-horizontal">
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Name" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-envelope"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Email" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-phone"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" disabled name="input1-group1" placeholder="Contact" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

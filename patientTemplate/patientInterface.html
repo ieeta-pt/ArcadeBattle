@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title Page -->
+    <title>Arcade Battle - Patient App</title>
+    <!-- Fontfaces CSS -->
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    
+    <!-- Bootstrap CSS -->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS -->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS -->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+
+</head>
+<body id="body" onload="loadInfo()">
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR -->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a onClick="loadPage('profile');">
+                    <h3>Arcade Battle</h3>
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li id="profile">
+                            <a onClick="loadPage('profile');">
+                                <i class="fas fa-id-card"></i>Profile
+                            </a>
+                        </li>
+                        <li id="games">
+                            <a onClick="loadPage('games');">
+                                <i class="fas fa-gamepad"></i>Games
+                            </a>
+                        </li>
+                        <li id="patient_statistics">
+                            <a onClick="loadPage('patient_statistics');">
+                                <i class="fas fa-chart-bar "></i>Statistics
+                            </a>
+                        </li>
+                        <li id="gestures">
+                            <a onClick="loadPage('gestures');">
+                                <i class="fas fa-sign-language"></i>Gestures
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR -->
+
+        <!-- PAGE CONTAINER -->
+        <div class="page-container">
+            <!-- HEADER DESKTOP -->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <div class="account-wrap">
+                                <div class="clearfix">
+                                    <div class="image">
+                                        <a href="" onclick="logout()">
+                                            <i class="zmdi zmdi-power"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- END HEADER DESKTOP -->
+    
+            <!-- MAIN CONTENT -->
+            <div class="main-content" id="main_page">
+            </div>
+            <!-- END MAIN CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Select the prefered Gesture</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="row col-lg-12">
+                                <div class="col-lg-12">
+                                    <div class="row" id="gesture_container">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="changePw" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Mudar PW</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label>Password Nova:</label>
+                                <input class="au-input au-input--full" type="password" id="newPw" placeholder="Password Nova">
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label>Repetição da Password :</label>
+                                <input class="au-input au-input--full" type="password" id="repPw" placeholder="Repetição">
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-lg-2 col-lg-offset-9">
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="changePw()">Change Password</button>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                                <div id="pw_change_error" class="alert alert-danger col-lg-12" style="display: none;">
+                                        Passwords don't match
+                                </div>
+                                <div id="pw_change_success" class="alert alert-success col-lg-12" style="display: none;">
+                                        Password Changed Successfully
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insert this line above script imports  -->
+   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+   <!-- Jquery JS -->
+   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+   <!-- Bootstrap JS -->
+   <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+   <!-- Vendor JS -->
+   <script src="vendor/animsition/animsition.min.js"></script>
+   <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+   <!-- Main JS -->
+   <script src="js/main.js"></script>
+   <!-- Our Scripts-->
+   <script src="js/test.js"></script>
+
+   <!-- Insert this line after script imports -->
+   <script>if (window.module) module = window.module;</script>
+
+</body>

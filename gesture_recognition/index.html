@@ -1,0 +1,44 @@
+    <html>
+<head>
+     <meta charset="UTF-8"> 
+    <title>Leap Motion JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/mycss.css">
+    <script src="./javascripts/leap-0.6.2.min.js"></script>
+    <script src="./javascripts/leap-plugins-0.1.6.min.js"></script>
+    <!--<script src="./javascripts/leap.web.js"></script>-->
+    <script src="./javascripts/leap.widgets.js"></script>
+    <script src="./javascripts/decision-tree.js"></script>
+    <script src="./javascripts/p5.min.js"></script>
+    <script src="./javascripts/p5.dom.min.js"></script>
+    <script src="./gesture_recon.js"></script>
+    <script>
+        var gesture_recon = new GestureRecon(
+            ["{\"root\":{\"attribute\":\"adj_fingers_dist1\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":39.04689488294811,\"match\":{\"category\":\"0\"},\"notMatch\":{\"attribute\":\"adj_fingers_dist4\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":22.035879832672897,\"match\":{\"attribute\":\"adj_fingers_dist1\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":30.354406599372027,\"match\":{\"category\":\"0\"},\"notMatch\":{\"category\":\"1\"},\"matchedCount\":5,\"notMatchedCount\":2},\"notMatch\":{\"attribute\":\"adj_fingers_dist3\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":19.321231844786706,\"match\":{\"attribute\":\"adj_fingers_dist3\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":19.42652825391094,\"match\":{\"category\":\"1\"},\"notMatch\":{\"category\":\"0\"},\"matchedCount\":16,\"notMatchedCount\":1},\"notMatch\":{\"category\":\"1\"},\"matchedCount\":17,\"notMatchedCount\":386},\"matchedCount\":7,\"notMatchedCount\":403},\"matchedCount\":390,\"notMatchedCount\":410},\"gesture_name\":\"closed_hand\"}"], true);
+        gesture_recon.start();
+    </script>
+</head>
+<body>
+<h1>Leap Motion JavaScript Sample</h1>
+<div id="main">
+    <!--<button type="button" class="btn btn-primary" id="start1" onclick="toggleRightGesture()">Start Right Gesture</button>
+    <button type="button" class="btn btn-primary" id="start2" onclick="toggleRandomGesture()">Start Random Gesture</button>-->
+    <input id="gesture_name_input" type="TEXT" style="margin-left: 10px;"/>
+	<button type="button" class="btn btn-primary" id="add_gesture" onclick="addGesture()">Add Gesture</button>
+    <!--<button type="button" class="btn btn-primary" id="test_gesture" onclick="testGesture()">Test Gesture</button>-->
+    <br />
+    <p id="image_couter"></p>
+</div>
+<div id="recognition_content">
+    <div id="canvas_div">
+    </div>
+    <p id="gesture_name" style="visibility: hidden"></p>
+    <button type="button" class="btn btn-success" id="right_gesture_btn" onclick="collectRightGestures()" style="margin-left: 20px">Start Collecting Right Gestures</button>
+    <button type="button" class="btn btn-danger" id="random_gesture_btn" onclick="collectRandomGestures()" style="margin-right: 20px; float: right">Start Collecting Random Gestures</button>
+    <div id="right_status_bars"></div>
+    <div id="random_status_bars"></div>
+</div>
+    <script src="./javascripts/bootstrap.min.js"></script>
+    <script src="./javascripts/jquery.min.js"></script>
+</body>
+</html>

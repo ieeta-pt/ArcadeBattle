@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+    <title> Arcade Battle </title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/estatisticas.js"></script>
+    <script src="js/pacientes.js"></script>
+    <script src="js/gestos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header" >
+                <h3 style="float: left; margin-left: -10px; margin-right: 15px; line-height: 30px;">Arcade Battle</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active" id="menu_estatisticas" onclick="load_statistics_page()">
+                    <a data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Estatísticas</a>
+                </li>
+                <li id="menu_pacientes" onclick="load_patients_page()">
+                    <a>Pacientes</a>
+                </li>
+                <li id="menu_gestos" onclick="load_gestures_page()">
+                    <a>Gestos</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="navbar" style="vertical-align: auto">
+        <div>
+            <div class="col-md-offset-8 col-md-1 col-xs-offset-3 col-xs-2" style="text-align: right">
+                <img src="img/avatar.png" style="margin: 10px; width: 60px; height: 60px">
+            </div>
+            <div class="col-md-3 col-xs-7">
+                <h2>PATIENT NAME</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="main_content">
+    </div>
+
+
+</body>
+</html>

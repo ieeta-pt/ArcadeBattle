@@ -1,0 +1,987 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <script src="{% static 'js/leap-0.6.2.min.js' %}"></script>
+    <script src="{% static 'js/leap-plugins-0.1.6.min.js' %}"></script>
+    <script src="{% static 'js/leap.widgets.js' %}"></script>
+    <script src="{% static 'js/decision-tree-min.js' %}"></script>
+    <script src="{% static 'js/p5.min.js' %}"></script>
+    <script src="{% static 'js/p5.dom.min.js' %}"></script>
+    <script src="{% static 'js/mCollectGestures.js' %}"></script>
+
+    <script type="text/javascript">
+
+        var gesturesChart = null;
+        var topGamesChart = null;
+        var gestureCorrectIncorrectChart = null;
+        var gestureEvolutionChart = null;
+        window.onload = function(){
+
+            var slider = document.getElementById("myRange").firstChild.nextSibling;
+            var output = document.getElementById("progress_value");§
+            output.innerHTML = slider.value + " %";
+
+            slider.oninput = function() {
+              output.innerHTML = this.value + " %";
+            }
+
+            var ctx = document.getElementById("topGamesChart").getContext("2d");
+
+            if(ctx) {
+                ctx.height = 150;
+                topGamesChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: [],
+                      datasets: [
+                        {
+                          label: "Games",
+                          data: [],
+                          borderColor: "rgba(93, 213, 93, 0.9)",
+                          borderWidth: "0",
+                          backgroundColor: "rgba(93, 213, 93, 0.5)"
+                        }
+                      ]
+                    },
+                    options: {
+                      legend: {
+                        position: 'top',
+                        labels: {
+                          fontFamily: 'Poppins'
+                        }
+
+                      },
+                      scales: {
+                        xAxes: [{
+                          ticks: {
+                            fontFamily: "Poppins"
+
+                          }
+                        }],
+                        yAxes: [{
+                          ticks: {
+                            beginAtZero: true,
+                            fontFamily: "Poppins"
+                          }
+                        }]
+                      }
+                    }
+                  });
+                }
+
+            //bar chart
+            var ctx2 = document.getElementById("gestureCorrectIncorrectChart");
+            if (ctx2) {
+              ctx2.height = 150;
+              gestureCorrectIncorrectChart = new Chart(ctx2, {
+                type: 'bar',
+                defaultFontFamily: 'Poppins',
+                data: {
+                  labels: [],
+                  datasets: [
+                    {
+                      label: "Correct Gestures",
+                      data: [],
+                      borderColor: "rgba(0, 128, 0, 0.9)",
+                      borderWidth: "0",
+                      backgroundColor: "rgba(0, 128, 0, 0.5)",
+                      fontFamily: "Poppins"
+                    },
+                    {
+                      label: "Incorrect Gestures",
+                      data: [],
+                      borderColor: "rgba(178,34,34,0.95)",
+                      borderWidth: "0",
+                      backgroundColor: "rgba(178,34,34,0.85)",
+                      fontFamily: "Poppins"
+                    }
+                  ]
+                },
+                options: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      fontFamily: 'Poppins'
+                    }
+
+                  },
+                  scales: {
+                    xAxes: [{
+                      ticks: {
+                        fontFamily: "Poppins"
+
+                      }
+                    }],
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                      }
+                    }]
+                  }
+                }
+              });
+            }
+
+
+
+
+            //bar chart
+            var ctx3 = document.getElementById("gesturesChart");
+            if (ctx3) {
+              ctx3.height = 150;
+              gesturesChart = new Chart(ctx3, {
+                type: 'bar',
+                defaultFontFamily: 'Poppins',
+                data: {
+                  labels: [],
+                  datasets: [
+                    {
+                      label: "Default Difficulty",
+                      data: [],
+                      borderColor: "rgba(0, 123, 255, 0.9)",
+                      borderWidth: "0",
+                      backgroundColor: "rgba(0, 123, 255, 0.5)",
+                      fontFamily: "Poppins"
+                    },
+                    {
+                      label: "User Difficulty",
+                      data: [],
+                      borderColor: "rgba(0,0,0,0.09)",
+                      borderWidth: "0",
+                      backgroundColor: "rgba(0,0,0,0.07)",
+                      fontFamily: "Poppins"
+                    }
+                  ]
+                },
+                options: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      fontFamily: 'Poppins'
+                    }
+
+                  },
+                  scales: {
+                    xAxes: [{
+                      ticks: {
+                        fontFamily: "Poppins"
+
+                      }
+                    }],
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                      }
+                    }]
+                  }
+                }
+              });
+            }
+
+
+
+            getData();
+
+        }
+
+        String.prototype.replaceAll = function(search, replacement) {
+            var target = this;
+            return target.split(search).join(replacement);
+        };
+
+        function getData() {
+            gestureJSON = JSON.parse(document.getElementById("gestureChart_dict").innerHTML.replaceAll('\'', '\"'))
+            correctIncorrectGestureJSON = JSON.parse(document.getElementById("gestureCorrectIncorrect").innerHTML.replaceAll('\'', '\"'))
+
+            topGamesChart.data.labels = [];
+            topGamesChart.data.datasets[0].data=[];
+
+
+            topGamesChart.data.labels = {{ games_quant.0|safe}};  //["Flappy Bird", "Gun Fight", "Quiz", "Space Invaders"];
+            topGamesChart.data.datasets[0].data = {{ games_quant.1|safe }} ; //[22,16,30,9];
+            topGamesChart.update();
+
+
+
+            Object.keys(gestureJSON).forEach(function(id) {
+                gesturesChart.data.labels.push(gestureJSON[id][0])
+                gesturesChart.data.datasets[0].data.push(gestureJSON[id][2])
+                gesturesChart.data.datasets[1].data.push(gestureJSON[id][1])
+            });
+
+            gesturesChart.update();
+
+
+            //
+            Object.keys(correctIncorrectGestureJSON).forEach(function(id) {
+                gestureCorrectIncorrectChart.data.labels.push(correctIncorrectGestureJSON[id][0])
+                gestureCorrectIncorrectChart.data.datasets[0].data.push(correctIncorrectGestureJSON[id][1])
+                gestureCorrectIncorrectChart.data.datasets[1].data.push(correctIncorrectGestureJSON[id][2])
+
+            });
+
+            gestureCorrectIncorrectChart.update();
+
+        }
+
+
+
+        Function.prototype.toJSON = function() {
+          var parts = this
+              .toString()
+              .match(/^\s*function[^(]*\(([^)]*)\)\s*{(.*)}\s*$/)
+          ;
+          if (parts == null)
+              throw 'Function form not supported';
+
+          return [
+              'window.Function',
+              parts[1].trim().split(/\s*,\s*/),
+              parts[2]
+          ];
+       };
+
+        function editNote(){
+            document.getElementById("notes_textarea").disabled = false;
+            document.getElementById("saveButton").disabled = false;
+            document.getElementById("editButton").disabled = true;
+        }
+
+        function saveNote(){
+            document.getElementById("notes_textarea").disabled = true;
+            document.getElementById("saveButton").disabled = true;
+            document.getElementById("editButton").disabled = false;
+        }
+
+
+        function resetModal(){
+            $('#addGestureModal').modal('hide');
+            hand_data = [];
+
+            document.getElementById("addGestureModal").innerHTML = '<div class="modal-dialog modal-lg" role="document"><div class="modal-content">\n' +
+                '            <div class="modal-header">\n' +
+                '                <h5 class="modal-title" id="addGestureModalLabel"></h5>\n' +
+                '                <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+                '                    <span aria-hidden="true">&times;</span>\n' +
+                '                </button>\n' +
+                '            </div>' +
+                '<div class="modal-body">\n' +
+                '                <div id="recognition_content" style="text-align: center">\n' +
+                '                    <div id="canvas_div" style="min-height: 450px">\n' +
+                '                    </div>\n' +
+                '                    <p id="gesture_name" style="diplay:none"></p>\n' +
+                '\n' +
+                '                    <button type="button" class="btn btn-success col-lg-5" id="right_gesture_btn" onclick="collectRightGestures()">Start Collecting Right Gestures</button>\n' +
+                '                    <button type="button" class="btn btn-danger col-lg-5" id="random_gesture_btn" disabled onclick="collectRandomGestures()">Start Collecting Random Gestures</button>\n' +
+                '                    <div id="right_status_bars"></div>\n' +
+                '                    <div id="random_status_bars"></div>\n' +
+                '                </div>\n' +
+                '            </div>\n' +
+                '\n' +
+                '            <div class="modal-footer">\n' +
+                '                <button type="button" class="btn btn-secondary" onclick="resetModal()">Cancel</button>\n' +
+                '                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled id="confirmGesture" onclick="updateGestureImg()">Confirm</button>\n' +
+                '            </div>' +
+                '</div>';
+
+            setup();
+        }
+
+        function updateGestureImg()
+        {
+            var gestureHolder = document.getElementById("gestureImg");
+
+            if(gestureHolder)
+            {
+                //IMAGEM A GUARDAR
+                var b64 = hand_position_image_b64.split(',')[1];
+                document.getElementById("imageInputText").value = b64;
+                //JSON A GUARDAR
+                document.getElementById("jsonInputText").value = JSON.stringify(decision_trees[0]);
+                gestureHolder.setAttribute( 'src', 'data:image/png;base64,'+ b64 );
+            }
+
+            resetModal()
+        }
+
+        function resetGestureAndTest(){
+            document.getElementById("gestureImg").setAttribute('src', 'https://www.unesale.com/ProductImages/Large/notfound.png' );
+            document.getElementById("stopTestGesture").disabled = true;
+            document.getElementById("testGestureBtn").disabled = true;
+        }
+
+        function updateGestureStatisticModal(button)
+        {
+            var g_name = $(button).attr("g_name");
+            var g_patient_difficulty = $(button).attr("g_patient_difficulty");
+            var g_default_difficulty = $(button).attr("g_default_difficulty");
+            var g_repetitions = $(button).attr("g_repetitions");
+            var g_photo = $(button).attr("g_photo");
+            var g_evolution = $(button).attr("g_evolution");
+
+            document.getElementById("gestureStatisticsName").value = g_name;
+            document.getElementById("gestureStatisticsRepetitions").value = g_repetitions;
+
+            document.getElementById("gestureStatisticsName_card").innerHTML = g_name;
+            $("#gestureStatisticPic").attr('src', 'data:image/png;base64,' + g_photo);
+
+
+            $("#gestureStatisticsDefaultDifficulty").attr("aria-valuenow", "" + g_default_difficulty);
+            document.getElementById("gestureStatisticsDefaultDifficulty").style.width = g_default_difficulty + "%";
+            document.getElementById("gestureStatisticsDefaultDifficulty").innerHTML = g_default_difficulty + "%";
+
+
+
+
+            $("#gestureStatisticsDefaultDifficulty").removeClass();
+            $("#gestureStatisticsDefaultDifficulty").attr('class', 'progress-bar progress-bar-striped progress-bar-animated');
+
+            if(g_default_difficulty <= 25)
+                $("#gestureStatisticsDefaultDifficulty").addClass(" bg-success");
+            else if (g_default_difficulty <= 50)
+                $("#gestureStatisticsDefaultDifficulty").addClass(" bg-info");
+            else if (g_default_difficulty <= 75)
+                $("#gestureStatisticsDefaultDifficulty").addClass(" bg-warning");
+            else
+                $("#gestureStatisticsDefaultDifficulty").addClass(" bg-danger");
+
+
+
+            $("#gestureStatisticsUserDifficulty").attr("aria-valuenow", "" + g_patient_difficulty);
+            document.getElementById("gestureStatisticsUserDifficulty").style.width = g_patient_difficulty + "%";
+            document.getElementById("gestureStatisticsUserDifficulty").innerHTML = g_patient_difficulty + "%";
+
+            $("#gestureStatisticsUserDifficulty").removeClass();
+            $("#gestureStatisticsUserDifficulty").attr('class', 'progress-bar progress-bar-striped progress-bar-animated');
+
+            if(g_patient_difficulty <= 25)
+                $("#gestureStatisticsUserDifficulty").addClass(" bg-success");
+            else if (g_patient_difficulty <= 50)
+                $("#gestureStatisticsUserDifficulty").addClass(" bg-info");
+            else if (g_patient_difficulty <= 75)
+                $("#gestureStatisticsUserDifficulty").addClass(" bg-warning");
+            else
+                $("#gestureStatisticsUserDifficulty").addClass(" bg-danger");
+
+
+            // update evolution
+            document.getElementById("patient_evolution_dic").innerText = g_evolution;
+
+            gestureJSON = JSON.parse(document.getElementById("patient_evolution_dic").innerText.replaceAll('\'', '\"'));
+
+
+            if(gestureEvolutionChart)
+                gestureEvolutionChart.destroy();
+
+            //line chart
+            var ctx4 = document.getElementById("gestureEvolution").getContext("2d");
+            if (ctx4) {
+              ctx4.height = 150;
+              gestureEvolutionChart = new Chart(ctx4, {
+                type: 'line',
+                defaultFontFamily: 'Poppins',
+                data: {
+                  labels: [],
+                  datasets: [
+                    {
+                      label: "Correct Gestures",
+                      data: [],
+                      borderColor: "rgba(0, 128, 0, 0.9)",
+                      borderWidth: "1",
+                      backgroundColor: "rgba(0, 128, 0, 0.5)",
+                      fontFamily: "Poppins",
+                        fill:false
+                    },
+                    {
+                      label: "Inorrect Gestures",
+                      data: [],
+                      borderColor: "rgba(178,34,34,0.95)",
+                      borderWidth: "1",
+                      backgroundColor: "rgba(178,34,34,0.85)",
+                      fontFamily: "Poppins",
+                        fill:false
+                    },
+                    {
+                      label: "Correctness Percentage",
+                      data: [],
+                      borderColor: "rgba(30,144,255,0.95)",
+                      borderWidth: "3",
+                      backgroundColor: "rgba(30,144,255,0.85)",
+                      fontFamily: "Poppins",
+                        fill:false
+                    }
+                  ]
+                },
+                options: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      fontFamily: 'Poppins'
+                    }
+
+                  },
+                  scales: {
+                    xAxes: [{
+                      ticks: {
+                        fontFamily: "Poppins"
+
+                      }
+                    }],
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: false,
+                        fontFamily: "Poppins"
+                      }
+                    }]
+                  }
+                }
+              });
+            }
+
+
+            Object.keys(gestureJSON).forEach(function(date)
+            {
+                gestureEvolutionChart.data.labels.push(date);
+
+                gestureEvolutionChart.data.datasets[0].data.push(gestureJSON[date]['correct']);
+                gestureEvolutionChart.data.datasets[1].data.push(gestureJSON[date]['incorrect']);
+                gestureEvolutionChart.data.datasets[2].data.push( Math.round((gestureJSON[date]['correct']) / (gestureJSON[date]['correct'] + gestureJSON[date]['incorrect']) * 100 ));
+            });
+
+            gestureEvolutionChart.update();
+
+
+        }
+
+    </script>
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <h1 id="current_patient">Patient: {{ patient.first_name }} {{ patient.last_name }} </h1>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2%">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="custom-tab">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="custom-nav-basicInfo-tab" data-toggle="tab" href="#custom-nav-basicInfo" role="tab" aria-controls="custom-nav-basicInfo"
+                                     aria-selected="true">Basic Info</a>
+                                    <a class="nav-item nav-link" id="basic-info-tab" data-toggle="tab" href="#custom-nav-profile" role="tab" aria-controls="custom-nav-profile"
+                                     aria-selected="false">Notes</a>
+                                    <a class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab" href="#custom-nav-contact" role="tab" aria-controls="custom-nav-contact"
+                                     aria-selected="false">Gestures</a>
+                                    <a class="nav-item nav-link" id="custom-nav-add-gesture-tab" data-toggle="tab" href="#custom-nav-add-gesture" role="tab" aria-controls="custom-nav-add-gesture"
+                                     aria-selected="false">Add Gesture</a>
+                                     <a class="nav-item nav-link" id="custom-nav-statistics-tab" data-toggle="tab" href="#custom-nav-statistics" role="tab" aria-controls="custom-nav-statistics"
+                                     aria-selected="false">Statistics</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="custom-nav-basicInfo" role="tabpanel" aria-labelledby="custom-nav-basicInfo-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-3">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                     <div class="mx-auto d-block">
+                                                        <img class="rounded-circle mx-auto d-block" src="data:image/png;base64, {{ patient.photo_b64 }}">
+                                                        <h5 class="text-sm-center mt-2 mb-1">{{ patient.first_name }} {{ patient.last_name }}</h5>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <div class="card">
+                                                <div class="card-body card-block">
+                                                    <form action="" method="post" class="form-horizontal">
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                        <i class="fa fa-user"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.first_name }} {{ patient.last_name }}" disabled name="input1-group1" placeholder="Name" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                        <i class="fa fa-envelope"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.username }}" disabled name="input1-group1" placeholder="Email" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                         <i class="fas fa-first-aid"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.doctor.first_name }} {{ patient.doctor.last_name }}  -  {{ patient.doctor.username }}" disabled name="input1-group1" placeholder="Email" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                        <i class="fa fa-phone"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.contact }}" disabled name="input1-group1" placeholder="Contact" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                        NIF
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.nif }}" disabled name="input1-group1" placeholder="NIF" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col col-md-12">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon col-1">
+                                                                        <i class="fas fa-birthday-cake"></i>
+                                                                    </div>
+                                                                    <input type="text" id="input1-group1" value="{{ patient.birth_date }}" disabled name="input1-group1" placeholder="Birth Date" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-add-gesture" role="tabpanel" aria-labelledby="custom-nav-add-gesture-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                               <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                    <div class="card-body card-block">
+                                                        <div class="card-body card-block row">
+
+                                                            <div class="row form-group col-lg-4 offset-lg-1 col-md-12 col-sm-12" style="text-align: center">
+                                                                <div id="gestureColorLayer" style=" background-color: rgba(255, 51, 51, 0); border-style: solid; border-width: 0px; border-color:#b30000;  position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+                                                                <img class="img-responsive" id="gestureImg" name="gestureImage" src="https://www.bkhhw.nl/wp-content/themes/bkhhw/assets/images/placeholder-logo.jpg"
+                                                                     alt="" width="460" height="345" style="">
+                                                                {{ form.gesture_image }}
+                                                                {{ form.decision_tree }}
+                                                            </div>
+
+                                                            <div class="row form-group col-lg-6 offset-lg-1 col-md-12 col-sm-12">
+                                                                <div class="col-12 col-md-3 col-sm-4 " style="margin-bottom:30px">
+                                                                    {{ form.name.label_tag }}
+                                                                </div>
+                                                                <div class="col-12 col-md-9 col-sm-8" style="margin-bottom:30px">
+                                                                    {{ form.name }}
+                                                                </div>
+                                                                <div class="col-12 col-md-3 col-sm-4" >
+                                                                    {{ form.default_difficulty.label_tag }}
+                                                                </div>
+                                                                <div id="myRange" class="col-12 col-md-7 col-sm-6">
+                                                                    {{ form.default_difficulty }}
+                                                                </div>
+                                                                <div class="col-12 col-md-2 col-sm-2">
+                                                                    <small id="progress_value"></small>
+                                                                </div>
+
+                                                                <div class="col col-md-3 col-sm-8" style="margin-top:20px">
+                                                                    {{ form.repetitions.label_tag }}
+                                                                </div>
+                                                                <div class="col-12 col-md-9 col-sm-4" style="margin-top:20px;">
+                                                                    {{ form.repetitions }}
+                                                                </div>
+
+                                                                <div class="offset-sm-3 offset-md-3 col-md-9 col-sm-9" style="padding-left:15px; padding-right:15px;">
+                                                                     <button type="button" class="btn btn-primary  col-12"  style="margin-top:20px;"  data-toggle="modal" data-target="#addGestureModal">
+                                                                        Upload Gesture
+                                                                    </button>
+                                                                </div>
+
+                                                                <div class="col-md-4 col-sm-4" style="padding-left:15px; padding-right:15px; margin-top:20px">
+                                                                     <button type="button" id="testGestureBtn" onclick="testGesture()" disabled class="btn btn-success  col-12"  style="margin-top:20px;">
+                                                                        Test Gesture
+                                                                    </button>
+                                                                </div>
+
+                                                                <div class="col-md-4 col-sm-4" style="padding-left:15px; padding-right:15px; margin-top:20px">
+                                                                     <input type="text" id="labelTestGesture" class="form-control" disabled>
+                                                                </div>
+
+                                                                <div class="col-md-4 col-sm-4" style="padding-left:15px; padding-right:15px; margin-top:20px">
+                                                                     <button type="button" id="stopTestGesture" onclick="stopTesting()" disabled class="btn btn-danger  col-12"  style="margin-top:20px;">
+                                                                        Stop
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary btn-sm">
+                                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                                        </button>
+                                                        <button type="reset" class="btn btn-danger btn-sm" onclick="resetGestureAndTest()">
+                                                            <i class="fa fa-ban"></i> Reset
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel" aria-labelledby="custom-nav-profile-tab">
+                                   <div class="col-lg-12 row">
+                                    <div class="col-lg-6">
+                                          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                               <div class="card-body card-block" style="padding: 0.25rem;">
+
+                                                   <div class="card-body card-block row">
+                                                       <div>
+                                                           <h3>My Private Notes</h3>
+                                                           <p style="margin-bottom: 10px; color:black">Only you are able to see these notes</p>
+
+                                                       </div>
+                                                       <div class="row form-group col-lg-12 col-md-12 col-sm-12" style="text-align: center;">
+                                                           {{ form_notes.notes }}
+                                                       </div>
+                                                       <div class="col-lg-12" style="text-align: right">
+                                                           <button type="submit" class="btn btn-primary btn-sm">
+                                                               <i class="fa fa-dot-circle-o"></i> Submit
+                                                           </button>
+                                                           <button type="reset" class="btn btn-danger btn-sm">
+                                                               <i class="fa fa-ban"></i> Reset
+                                                           </button>
+                                                        </div>
+                                                   </div>
+
+                                               </div>
+                                          </form>
+                                   </div>
+                                    <div class="col-lg-6">
+                                          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                               <div class="card-body card-block" style="padding: 0.25rem;">
+                                                   <div class="card-body card-block row">
+                                                       <div>
+                                                           <h3>Notes for the patient</h3>
+                                                            <p style="margin-bottom: 10px; color:black">Patient will be able to see these notes</p>
+                                                       </div>
+                                                       <div class="row form-group col-lg-12 col-md-12 col-sm-12" style="text-align: center;">
+                                                           {{ form_notes_patient.patient_notes }}
+                                                       </div>
+                                                       <div class="col-lg-12" style="text-align: right">
+                                                       <button type="submit" class="btn btn-primary btn-sm">
+                                                           <i class="fa fa-dot-circle-o"></i> Submit
+                                                       </button>
+                                                       <button type="reset" class="btn btn-danger btn-sm">
+                                                           <i class="fa fa-ban"></i> Reset
+                                                       </button>
+                                                   </div>
+                                                   </div>
+
+                                               </div>
+                                          </form>
+                                   </div>
+                               </div>
+                               </div>
+                                <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel" aria-labelledby="custom-nav-contact-tab">
+                                    <div class="row" style="margin-top: 2%">
+
+                                        {% for g in patient_gestures %}
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-header" style="text-align: center; background:#8C8C8C; color:#fff">
+                                                    <strong class="card-title mb-3 sm-6">{{ g.name }}</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mx-auto d-block">
+                                                        <img class="mx-auto d-block" src="data:image/png;base64, {{ g.image }}" alt="Card image cap">
+                                                    </div>
+                                                    <hr>
+                                                   <div class="card-text text-md-center">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-outline-primary video"
+                                                            data-toggle="modal" data-target="#gestureStatisticsModal" g_name="{{ g.name }}"
+                                                            g_default_difficulty="{{ g.default_difficulty }}" g_repetitions="{{ g.repetitions }}"
+                                                            g_patient_difficulty="{{ g.patient_difficulty }}" g_photo="{{ g.image }}" g_evolution="{{ g.evolution }}"
+                                                            onclick="updateGestureStatisticModal(this)" >
+                                                            <i class="fas fa-search-plus"></i> Gesture Statistics
+                                                        </button>
+                                                       <button type="button" class="btn-sm btn-danger"
+                                                            data-toggle="modal" data-target="#deleteModal"
+                                                            onclick="loadInfo('{{ g.image }}', '{{ g.name }}', '{{ g.username }}')"
+                                                            style="margin-top: 10px">
+                                                            Remove
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-nav-statistics" role="tabpanel" aria-labelledby="custom-nav-statistics-tab">
+                                    <div class="row" style="margin-top: 2%">
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Gestures Correctness</h3>
+                                                    <canvas id="gestureCorrectIncorrectChart"></canvas>
+                                                    <h1 style="display:none" id="gestureCorrectIncorrect">{{ correct_incorrect_gestures_dict }}</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Games Played</h3>
+                                                    <canvas id="topGamesChart"></canvas>
+
+                                                    <h1 style="display:none" id="gestureChart_dict">{{ gestures_dict }}</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="au-card m-b-30">
+                                                <div class="au-card-inner">
+                                                    <h3 class="title-2 m-b-40">Gestures Difficulty</h3>
+                                                    <canvas id="gesturesChart"></canvas>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal gesture -->
+<div class="modal fade" id="gestureStatisticsModal"  role="dialog" aria-labelledby="gestureStatisticsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gestureStatisticsModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body row">
+                <div class="col-md-3">
+                    <div class="card" style="margin-bottom:0px !important">
+                        <img id="gestureStatisticPic" class="card-img-top" alt="Card image cap">
+                            <div class="card-text text-sm-center">
+                                <p id="gestureStatisticsName_card" ></p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card" style="border:0px; margin-bottom:0px">
+                        <div class="card-body card-block" style="padding:0px">
+                            <form action="" method="post" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon col-md-4" style="margin-right:7px">
+                                                <i class="fa fa-user"></i> Name
+                                            </div>
+                                            <input type="text" id="gestureStatisticsName" name="input1-group1" value="" disabled class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon  col-md-4" style="margin-right:7px">
+                                                    <i class="far fa-chart-bar"></i> Default Difficulty
+                                            </div>
+                                            <div class="progress" style="width:65%; height: auto; margin-bottom: 0px;">
+                                                    <div id="gestureStatisticsDefaultDifficulty" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style=""
+                                                        aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" style="margin-right:7px; width:33%">
+                                                <i class="fas fa-flag"></i> Repetitions
+                                            </div>
+                                            <input id="gestureStatisticsRepetitions" type="text" id="input1-group1" disabled name="input1-group1" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                        <div class="col col-md-12">
+                                            <div class="input-group">
+                                                <div class="input-group-addon  col-md-4" style="margin-right:7px">
+                                                    <i class="fas fa-user"></i> User Difficulty
+                                                </div>
+                                                <div class="progress" style="width:65%; height: auto; margin-bottom: 0px;">
+                                                        <div id="gestureStatisticsUserDifficulty"class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style=""
+                                                            aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12" style="padding:30px; padding-top:0px; margin-top:20px">
+                    <h3>Patient Evolution</h3>
+                    <p id="patient_evolution_dic" style="display:none"></p>
+                    <canvas id="gestureEvolution" style="margin: 30px; margin-top:25px"></canvas>
+                </div>
+
+            </div>
+            <!--
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+<!-- end gesture large -->
+
+
+
+<!-- modal add gesture -->
+<div class="modal fade" id="addGestureModal" tabindex="-1" role="dialog" aria-labelledby="addGestureModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addGestureModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="recognition_content" style="text-align: center">
+                    <div id="canvas_div" style="min-height: 450px">
+                    </div>
+                    <p id="gesture_name" style="diplay:none"></p>
+
+                    <button type="button" class="btn btn-success col-lg-5" id="right_gesture_btn" onclick="collectRightGestures()">Start Collecting Right Gestures</button>
+                    <button type="button" class="btn btn-danger col-lg-5" id="random_gesture_btn" disabled onclick="collectRandomGestures()">Start Collecting Random Gestures</button>
+                    <div id="right_status_bars"></div>
+                    <div id="random_status_bars"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="resetModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled id="confirmGesture" onclick="updateGestureImg()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end gesture large -->
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to remove: </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                <div class="modal-body">
+
+                    <div class="row form-group">
+
+                        <div class="col-md-4 offset-md-4">
+                        <div class="card" style="margin-bottom:0px !important">
+                            <img id="gestureRemovePic" class="card-img-top" alt="Card image cap">
+                            <div class="card-text text-sm-center">
+                                <p id="gestureStatisticsName_card" ></p>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-top: 10px">
+                            <div class="input-group-addon col-lg-3 offset-lg-1">
+                                <i class="far fa-hand-paper"></i> {{ gesture_form.gesture_name.label }}
+                            </div>
+                            <div class="input-group-addon col-lg-7" >
+                                {{ gesture_form.gesture_name }}
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-top: 10px">
+                            <div class="input-group-addon col-lg-3 offset-lg-1">
+                                <i class="fas fa-envelope-square"></i> {{ gesture_form.user_email.label }}
+                            </div>
+                            <div class="input-group-addon col-lg-7" >
+                                {{ gesture_form.user_email }}
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function loadInfo(b64_image, g_name, u_mail)
+    {
+        document.getElementById("gestureRemovePic").setAttribute('src', 'data:image/png;base64,' + b64_image );
+
+        document.getElementById("id_gesture_name").value = g_name;
+        $("#id_gesture_name").prop('readonly', true);
+
+        document.getElementById("id_user_email").value = u_mail;
+        $("#id_user_email").prop('readonly', true);
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <!-- P5 JS -->
+    <script src="javascripts/p5.min.js"></script>
+    <script src="javascripts/addons/p5.dom.min.js"></script>
+    <script src="javascripts/addons/p5.sound.min.js"></script>
+    <script src="javascripts/p5.collide2d.min.js"></script>
+    <script src="javascripts/leap-0.6.2.min.js"></script>
+    <script src="javascripts/leap-plugins-0.1.6.min.js"></script>
+    <script src="javascripts/leap.widgets.js"></script>
+    <script src="javascripts/decision-tree.js"></script>
+    <script src="javascripts/gesture_recon.js"></script>
+    <script src="games/quiz.js"></script>
+  </head>
+  <body>
+      <script type="text/javascript">
+          // You can also require other files to run in this process
+          require('./renderer.js');
+          var gesture_recon = new GestureRecon(
+                [
+                    "{\"root\":{\"attribute\":\"adj_fingers_dist1\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":39.04689488294811,\"match\":{\"category\":\"0\"},\"notMatch\":{\"attribute\":\"adj_fingers_dist4\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":22.035879832672897,\"match\":{\"attribute\":\"adj_fingers_dist1\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":30.354406599372027,\"match\":{\"category\":\"0\"},\"notMatch\":{\"category\":\"1\"},\"matchedCount\":5,\"notMatchedCount\":2},\"notMatch\":{\"attribute\":\"adj_fingers_dist3\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":19.321231844786706,\"match\":{\"attribute\":\"adj_fingers_dist3\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":19.42652825391094,\"match\":{\"category\":\"1\"},\"notMatch\":{\"category\":\"0\"},\"matchedCount\":16,\"notMatchedCount\":1},\"notMatch\":{\"category\":\"1\"},\"matchedCount\":17,\"notMatchedCount\":386},\"matchedCount\":7,\"notMatchedCount\":403},\"matchedCount\":390,\"notMatchedCount\":410},\"gesture_name\":\"closed_hand\"}",
+                    "{\"root\":{\"attribute\":\"n_extended_fingers\",\"predicate\":[\"b\",\"c\",\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":4,\"match\":{\"category\":\"1\"},\"notMatch\":{\"category\":\"0\"},\"matchedCount\":391,\"notMatchedCount\":412},\"gesture_name\":\"open_hand\"}"
+                ],
+          false);
+          window.onload = function() { gesture_recon.start(); keyReceived(); }
+          window.onbeforeunload = function () { killServer(); }
+        </script>
+  </body>
+</html>

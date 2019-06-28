@@ -1,0 +1,161 @@
+{% extends "basic_layout.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+    <script type="text/javascript">
+        var userStats = null;
+        var topPlayedGames = null;
+        var gestureStats = null;
+        window.onload = function(){
+
+            var ctx = document.getElementById("topPlayedGames").getContext("2d");
+
+            if(ctx) {
+                ctx.height = 150;
+                topPlayedGames = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                      labels: [],
+                      datasets: [
+                        {
+                          label: "Games",
+                          data: [],
+                          borderColor: "rgba(66, 66, 244, 0.9)",
+                          borderWidth: "0",
+                          backgroundColor: "rgba(66, 66, 244, 0.5)"
+                        }
+                      ]
+                    },
+                    options: {
+                      legend: {
+                        position: 'top',
+                        labels: {
+                          fontFamily: 'Poppins'
+                        }
+
+                      },
+                      scales: {
+                        xAxes: [{
+                          ticks: {
+                            fontFamily: "Poppins"
+
+                          }
+                        }],
+                        yAxes: [{
+                          ticks: {
+                            beginAtZero: true,
+                            fontFamily: "Poppins"
+                          }
+                        }]
+                      }
+                    }
+                  });
+                }
+
+            var ctx2 = document.getElementById("userStats").getContext("2d");
+
+            if(ctx2) {
+                ctx2.height = 150;
+                userStats = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                      labels: [],
+                      datasets: [
+                        {
+                          label: "Users",
+                          data: [],
+                          borderColor: "rgba(255, 187, 0, 0.9)",
+                          borderWidth: "0",
+                          backgroundColor: "rgba(255, 187, 0, 0.5)"
+                        }
+                      ]
+                    },
+                    options: {
+                      legend: {
+                        position: 'top',
+                        labels: {
+                          fontFamily: 'Poppins'
+                        }
+
+                      },
+                      scales: {
+                        xAxes: [{
+                          ticks: {
+                            fontFamily: "Poppins"
+
+                          }
+                        }],
+                        yAxes: [{
+                          ticks: {
+                            beginAtZero: true,
+                            fontFamily: "Poppins"
+                          }
+                        }]
+                      }
+                    }
+                  });
+                }
+            getStats();
+        }
+
+
+        function getStats(){
+            jsonData = JSON.parse(document.getElementById("groups_dict").innerHTML.replaceAll('\'', '\"'))
+
+            userStats.data.labels = [];
+            userStats.data.datasets[0].data=[];
+
+            Object.keys(jsonData).forEach(function(group) {
+                userStats.data.labels.push(group)
+                userStats.data.datasets[0].data.push(jsonData[group])
+            });
+
+            userStats.update();
+
+            jsonData = JSON.parse(document.getElementById("games_dict").innerHTML.replaceAll('\'', '\"'))
+
+            topPlayedGames.data.labels = [];
+            topPlayedGames.data.datasets[0].data=[];
+
+            Object.keys(jsonData).forEach(function(group) {
+                topPlayedGames.data.labels.push(group)
+                topPlayedGames.data.datasets[0].data.push(jsonData[group])
+            });
+
+            topPlayedGames.update();
+        }
+
+        String.prototype.replaceAll = function(search, replacement) {
+            var target = this;
+            return target.split(search).join(replacement);
+        };
+    </script>
+
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row" style="margin-top: 2%">
+            <div class="col-lg-6">
+                <div class="au-card m-b-30">
+                    <div class="au-card-inner">
+                        <h3 class="title-2 m-b-40">Top Played Games</h3>
+                        <canvas id="topPlayedGames"></canvas>
+                        <div style="display:none" id="games_dict">{{ gamesPlayed }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="au-card m-b-30">
+                    <div class="au-card-inner">
+                        <h3 class="title-2 m-b-40">Users Statistics</h3>
+                        <canvas id="userStats"></canvas>
+                        <div style="display:none" id="groups_dict">{{ groups_count }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

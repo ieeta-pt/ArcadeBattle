@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun Fight</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <!-- P5 JS -->
+    <script src="javascripts/p5.min.js"></script>
+    <script src="javascripts/addons/p5.dom.min.js"></script>
+    <script src="javascripts/addons/p5.sound.min.js"></script>
+    <script src="javascripts/addons/p5.play.js"></script>
+    <script src="javascripts/p5.collide2d.min.js"></script>
+    <script src="javascripts/leap-0.6.2.min.js"></script>
+    <script src="javascripts/leap-plugins-0.1.6.min.js"></script>
+    <script src="javascripts/leap.widgets.js"></script>
+    <script src="javascripts/decision-tree.js"></script>
+    <script src="javascripts/gesture_recon.js"></script>
+    <script src="games/gunfight.js"></script>
+  </head>
+  <body>
+      <script type="text/javascript">
+          // You can also require other files to run in this process
+          require('./renderer.js');
+          var gesture_recon = new GestureRecon(
+                [
+                    localStorage.getItem("gesture_tree"),
+                    "{\"root\":{\"attribute\":\"n_extended_fingers\",\"predicate\":[\"window.Function\",[\"b\",\"c\"],\"return b>=c\"],\"predicateName\":\">=\",\"pivot\":4,\"match\":{\"category\":\"1\"},\"notMatch\":{\"category\":\"0\"},\"matchedCount\":391,\"notMatchedCount\":412},\"gesture_name\":\"open_hand\"}"
+                ],
+          false);
+          window.onload = function() { gesture_recon.start(); keyReceived(); }
+          window.onbeforeunload = function () { killServer(); }
+        </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+\BOOKMARK [1][-]{section*.2}{Palavras-chave}{}% 1
+\BOOKMARK [1][-]{section*.3}{Resumo}{}% 2
+\BOOKMARK [1][-]{section*.4}{Abreviaturas}{}% 3
+\BOOKMARK [1][-]{section.1}{Introdu\347\343o}{}% 4
+\BOOKMARK [1][-]{section.2}{Estado da Arte e Trabalho Relacionado}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Serious Games}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Reconhecimento de Gestos}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Software}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Hardware}{subsection.2.2}% 9
+\BOOKMARK [1][-]{section.3}{Modelo Conceptual}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Requisitos do Sistema}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Obten\347\343o de Requisitos}{subsection.3.1}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Descri\347\343o do Contexto de Utiliza\347\343o}{subsection.3.1}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Atores}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Casos de Uso}{subsection.3.1}% 15
+\BOOKMARK [1][-]{section.4}{Pesquisa}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Reconhecimento de Gestosi Atrav\351s do LMC}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Reconhecimento de gestos atrav\351s de um dispositivo Android.}{section.4}% 18
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Objetivos}{subsection.4.2}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.2}{OpenCV}{subsection.4.2}% 20
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Recolha e An\341lise de Imagens}{subsection.4.2}% 21
+\BOOKMARK [3][-]{subsubsection.4.2.4}{Problemas Encontrados}{subsection.4.2}% 22
+\BOOKMARK [3][-]{subsubsection.4.2.5}{Conclus\343o}{subsection.4.2}% 23
+\BOOKMARK [1][-]{section.5}{Procedimento}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Arquitetura do Sistema}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Reconhecimento de Gestos}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.3}{Base de Dados}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.4}{REST API}{section.5}% 28
+\BOOKMARK [3][-]{subsubsection.5.4.1}{Queries, Django ORM e Base de Dados}{subsection.5.4}% 29
+\BOOKMARK [3][-]{subsubsection.5.4.2}{Autentica\347\343o e Autoriza\347\343o}{subsection.5.4}% 30
+\BOOKMARK [3][-]{subsubsection.5.4.3}{Envio Autom\341tico de E-mails}{subsection.5.4}% 31
+\BOOKMARK [2][-]{subsection.5.5}{Plataforma do M\351dico}{section.5}% 32
+\BOOKMARK [3][-]{subsubsection.5.5.1}{Adicionar/Remover Paciente}{subsection.5.5}% 33
+\BOOKMARK [3][-]{subsubsection.5.5.2}{Observar estat\355sticas}{subsection.5.5}% 34
+\BOOKMARK [3][-]{subsubsection.5.5.3}{Adicionar Gestos}{subsection.5.5}% 35
+\BOOKMARK [3][-]{subsubsection.5.5.4}{Escrever Notas Privadas ou Partilhadas com o Paciente}{subsection.5.5}% 36
+\BOOKMARK [2][-]{subsection.5.6}{Plataforma do Paciente}{section.5}% 37
+\BOOKMARK [3][-]{subsubsection.5.6.1}{Autentica\347\343o}{subsection.5.6}% 38
+\BOOKMARK [3][-]{subsubsection.5.6.2}{Jogos}{subsection.5.6}% 39
+\BOOKMARK [3][-]{subsubsection.5.6.3}{Perfil}{subsection.5.6}% 40
+\BOOKMARK [3][-]{subsubsection.5.6.4}{Estat\355sticas}{subsection.5.6}% 41
+\BOOKMARK [3][-]{subsubsection.5.6.5}{Gestos}{subsection.5.6}% 42
+\BOOKMARK [2][-]{subsection.5.7}{Jogos}{section.5}% 43
+\BOOKMARK [3][-]{subsubsection.5.7.1}{P5.JS}{subsection.5.7}% 44
+\BOOKMARK [3][-]{subsubsection.5.7.2}{Godot}{subsection.5.7}% 45
+\BOOKMARK [3][-]{subsubsection.5.7.3}{Comunica\347\343o Entre M\363dulos}{subsection.5.7}% 46
+\BOOKMARK [1][-]{section.6}{Resultados}{}% 47
+\BOOKMARK [1][-]{section.7}{Conclus\343o}{}% 48
+\BOOKMARK [1][-]{section*.41}{Refer\352ncias}{}% 49
